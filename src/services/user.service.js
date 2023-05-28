@@ -113,7 +113,7 @@ async function signUp(user) {
         const registeredUser = await httpService.post(API + 'signup', user)
         return saveLocalUser(registeredUser)
     }
-    catch {
+    catch (err) {
         console.error(err)
     }
 }
