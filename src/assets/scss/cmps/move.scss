@@ -1,0 +1,122 @@
+.moves hr,
+.last-moves hr {
+    display: none;
+
+    @include for-tablet-layout {
+        display: block;
+    }
+}
+
+.moves,
+.last-moves,
+.pending-moves {
+    @include for-tablet-layout {
+        margin-block-start: 1em;
+    }
+}
+
+.moves,
+.last-moves,
+.pending-moves {
+    @include for-tablet-layout {
+        background-color: $clr10;
+        margin-block-end: 1em;
+    }
+
+    @include for-tablet-layout {
+        background: none;
+    }
+
+    padding: 0.5em;
+    border-radius: 0.5em;
+    text-align: center;
+
+    h1 {
+        font-size: 1.2rem;
+        margin-block-end: 0.8em;
+        border-bottom: solid 1px $clr11;
+        margin-block-start: 0;
+    }
+
+    .moves-list-preview,
+    .pendingMoves-list-preview {
+        gap: 3em;
+
+        @include for-tablet-layout {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .info {
+            margin-block-end: 0.5em;
+        }
+
+        >* {
+            margin: auto;
+            text-align: center;
+            border-radius: 0.5em;
+            background-color: $clr11;
+            margin-block-end: 1em;
+            line-height: 1.5em;
+
+            @include for-tablet-layout {
+                padding: 1em;
+                border-radius: 2.5em;
+            }
+
+            .at {
+                font-size: 0.9rem;
+            }
+
+            .title {
+                color: $yellow;
+                margin-block: 0.5em;
+                margin: auto;
+                width: 80%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                @include for-normal-layout {
+                    width: 100%;
+                }
+            }
+
+            .action {
+                margin: auto;
+                margin-block: 0.5em;
+                gap: 0.5em;
+
+                .approve {
+                    color: $green;
+                }
+
+                .reject {
+                    color: $red;
+                }
+            }
+
+            a {
+                text-decoration: none;
+
+                .to,
+                .from {
+                    margin: auto;
+                    margin-block: 0.5em;
+                    width: 60%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    @include for-tablet-layout {
+                        width: 100%;
+                    }
+                }
+
+                span {
+                    text-decoration-line: underline;
+                }
+            }
+        }
+    }
+}

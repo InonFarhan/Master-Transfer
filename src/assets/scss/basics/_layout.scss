@@ -1,0 +1,14 @@
+.container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: minmax(auto, 10px) minmax(auto, 1800px) minmax(auto, 10px);
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 20px;
+    padding-top: 0.1em;
+
+    >* {
+        grid-column: 2;
+    }
+}

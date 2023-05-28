@@ -1,0 +1,79 @@
+// Externals
+
+// Setup
+@import "setup/variables";
+@import "setup/mixins";
+
+// Basics
+@import "basics/typography";
+@import "basics/base";
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/modals";
+@import "basics/animations";
+
+// Views
+@import "views/mister-bitcoin-contactPage";
+@import "views/mister-bitcoin-details";
+@import "views/mister-bitcoin-edit";
+@import "views/LoginSignUp";
+
+// Components
+@import "cmps/home-page-preview";
+@import "cmps/mister-bitcoin-preview";
+@import "cmps/app-header";
+@import "cmps/move";
+@import "cmps/Loader";
+
+.main-app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+        flex-grow: 1;
+        width: 100%;
+
+        .green {
+            color: $green;
+        }
+
+        .red {
+            color: $red;
+        }
+
+        .approved {
+            span {
+                color: $green;
+            }
+        }
+
+        .rejected {
+            span {
+                color: $red;
+            }
+        }
+
+        .pending {
+            span {
+                color: $clr1;
+            }
+        }
+    }
+
+    >footer {
+        z-index: 2;
+        background-color: $clr6;
+        color: $clr3;
+        border-top-left-radius: 555px;
+        border-top-right-radius: 555px;
+        height: 1.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        >* {
+            margin-inline-start: 0.5em;
+        }
+    }
+}
