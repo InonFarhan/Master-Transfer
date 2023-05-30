@@ -99,8 +99,7 @@ export function ContactDetails() {
                     <TransferFund contact={contact} coins={user.coins} />
                 </section>
             </section>
-            {/* {(moves.find(m => m.toId !== contact._id && m.fromId !== contact._id)) && <Loader />} */}
-            {(moves.find(m => m.toId !== contact._id && m.fromId !== contact._id)) && (pendingMoves?.find(pM => pM.fromId !== contact?._id)) && <Loader />}
+            {((moves.find(m => m.toId !== contact._id && m.fromId !== contact._id)) || (pendingMovesToShow.length && (pendingMoves.find(pM => pM.fromId !== contact._id)))) && <Loader />}
             {pendingMovesToShow}
             {movesToShow}
         </section >

@@ -78,8 +78,9 @@ export function HomePage() {
                 </section>
                 <Weather className="weather-and-time" />
             </section>
-            {(!pendingMoves.find(pM => pM.toId !== user._id) && pendingMovesToShow) || (pendingMoves.find(pM => pM.toId !== user._id) && <Loader />)}
-            {(moves.find(m => m.fromId === user._id || m.toId === user._id) && movesToShow) || (!moves.find(m => m.fromId === user._id || m.toId === user._id) && <Loader />)}
+            {(pendingMoves.find(pM => pM.toId !== user._id) || (!moves.find(m => m.fromId === user._id || m.toId === user._id))) && <Loader />}
+            {pendingMovesToShow}
+            {movesToShow}
             <button className="logout simple-button" onClick={onLogout} title='Logout'><img src={logout_button} alt="logout" /></button>
         </section>
     )
