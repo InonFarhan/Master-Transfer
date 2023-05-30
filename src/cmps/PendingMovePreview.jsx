@@ -7,9 +7,9 @@ export function PendingMovePreview({ pendingMove, contact, updatePendingMove }) 
             < section className="pending-move-preview flex column" >
                 {from}
                 < section className="info" >
-                    <p className='at'>At: {new Intl.DateTimeFormat('en-GB',
+                    <p className='at'>{new Intl.DateTimeFormat('en-GB',
                         { dateStyle: 'short' }).format(pendingMove.at)}</p>
-                    <p> Amount: ${pendingMove.amount}</p>
+                    <p>${pendingMove.amount}</p>
                 </section >
                 <p className="title">{pendingMove.title}</p>
                 <section className="action flex">

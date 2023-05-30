@@ -29,6 +29,7 @@ export function ContactDetails() {
 
     useEffect(() => {
         dispatch(loadPendingMoves())
+        loadContact()
     }, [pendingMoves])
 
     useEffect(() => {
@@ -71,7 +72,7 @@ export function ContactDetails() {
 
     const movesToShow = moves.length && moves.find(m => m.toId === contact?._id || m.fromId === contact?._id) ?
         <section className="moves">
-            <MovesList moves={moves.filter(m => m.toId === contact._id || m.fromId === contact._id).reverse()} />
+            <MovesList moves={moves} />
             <hr />
         </section>
         : ''
@@ -98,6 +99,8 @@ export function ContactDetails() {
                     <TransferFund contact={contact} coins={user.coins} />
                 </section>
             </section>
+            {/* {(moves.find(m => m.toId !== contact._id && m.fromId !== contact._id)) && <Loader />} */}
+            {(moves.find(m => m.toId !== contact._id && m.fromId !== contact._id)) && (pendingMoves?.find(pM => pM.fromId !== contact?._id)) && <Loader />}
             {pendingMovesToShow}
             {movesToShow}
         </section >

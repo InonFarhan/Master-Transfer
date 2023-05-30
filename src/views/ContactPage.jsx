@@ -17,7 +17,7 @@ export function ContactPage() {
     useEffect(() => {
         dispatch(loadUser())
         dispatch(loadContacts())
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         return () => {
@@ -25,7 +25,7 @@ export function ContactPage() {
             dispatch(setFilterBy(filter))
             dispatch(loadContacts())
         }
-    }, [])
+    }, [dispatch])
 
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))

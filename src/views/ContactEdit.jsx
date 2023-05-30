@@ -12,21 +12,20 @@ export function ContactEdit() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        async function loadContact() {
+            const contactId = params.id
+            let contact
+            try {
+                if (contactId) contact = await userService.getUserById(contactId)
+                else contact = userService.getEmptyContact()
+                setContact(contact)
+            }
+            catch (error) {
+                console.log('error:', error)
+            }
+        }
         loadContact()
-    }, [])
-
-    async function loadContact() {
-        const contactId = params.id
-        let contact
-        try {
-            if (contactId) contact = await userService.getUserById(contactId)
-            else contact = userService.getEmptyContact()
-            setContact(contact)
-        }
-        catch (error) {
-            console.log('error:', error)
-        }
-    }
+    }, [params])
 
     function onBack() {
         navigate(-1)
@@ -78,7 +77,7 @@ export function ContactEdit() {
                     {inputToShow}
                     <section className="input flex">
                         <label htmlFor="phone">Phone</label>
-                        <input value={contact.phone} onChange={handleChange} type="text" name="phone" id="phone" />
+                        <input value={contact.phone} onChange={handleChange} type="tel" name="phone" id="phone" />
                     </section>
                     <button>{contact._id ? 'Save' : 'Add'}</button>
                 </form>
