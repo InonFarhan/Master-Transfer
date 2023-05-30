@@ -22,6 +22,7 @@ async function addMove(contact, transfer) {
     move.at = Date.now()
     move.amount = transfer.amount
     move.title = transfer.title
+    move.fromNumber = contact.phone
     await httpService.post('move', move)
     return contact
 }

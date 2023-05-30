@@ -11,11 +11,16 @@ export function PendingMovesList({ pendingMoves, contacts }) {
 
     function getContact(pendingMove) {
         if (contacts) {
-            let contact
-            if (contacts) {
-                contact = contacts.find(c => c._id === pendingMove.fromId)
-                return contact
-            }
+            let contact = contacts?.find(c => c._id === pendingMove.fromId)
+            if (contacts && !contact) return pendingMove.fromNumber
+            return contact
+
+            // let contact
+            // if (contacts) {
+            //     contact = contacts.find(c => c._id === pendingMove.fromId)
+            //     return contact
+            // }
+
         }
     }
 

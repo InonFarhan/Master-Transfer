@@ -4,7 +4,12 @@ import { useSelector } from 'react-redux'
 export function MovePreview({ move, contact }) {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const isLoggedinContact = move.fromId === user._id ? true : false
-    const to = contact ? <Link to={`/contact/${contact._id}`}><p className="to">{isLoggedinContact ? 'To:' : 'From'} <span>{contact.username}</span></p> </Link> : ''
+    // const to = contact ? <Link to={`/contact/${contact._id}`}><p className="to">{isLoggedinContact ? 'To:' : 'From'} <span>{contact.username}</span></p> </Link> : ''
+    let to = contact ? <Link to={`/contact/${contact._id}`}><p className="to">{isLoggedinContact ? 'To:' : 'From'} <span>{contact.username}</span></p> </Link> : ''
+    if (typeof contact === 'string') {
+        to = <p className="to">From: {contact}</p >
+    }
+
 
     if (move) {
         return (

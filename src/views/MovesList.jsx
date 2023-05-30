@@ -7,7 +7,11 @@ export function MovesList({ moves, contacts }) {
     function getContact(move) {
         const isLoggedinContact = move.toId === user._id ? true : false
         if (!isLoggedinContact) return contacts?.find(c => c._id === move.toId)
-        else return contacts?.find(c => c._id === move.fromId)
+
+        const contact = contacts?.find(c => c._id === move.fromId)
+        if (contacts && !contact) return move.fromNumber
+        return contact
+        // else return contacts?.find(c => c._id === move.fromId)
     }
 
     if (moves?.length) return (
