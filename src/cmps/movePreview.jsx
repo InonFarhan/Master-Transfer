@@ -1,20 +1,32 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import add from '../assets/svgs/add.svg'
 
-export function MovePreview({ move, contact }) {
+export function MovePreview({ move, contact, onSaveContact }) {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const isLoggedinContact = move.fromId === user._id ? true : false
-    // const to = contact ? <Link to={`/contact/${contact._id}`}><p className="to">{isLoggedinContact ? 'To:' : 'From'} <span>{contact.username}</span></p> </Link> : ''
-    let to = contact ? <Link to={`/contact/${contact._id}`}><p className="to">{isLoggedinContact ? 'To:' : 'From'} <span>{contact.username}</span></p> </Link> : ''
-    if (typeof contact === 'string') {
-        to = <p className="to">From: {contact}</p >
-    }
 
+    let to =
+        contact ?
+            typeof contact !== 'string' ?
+                <Link
+                    to={`/contact/${contact._id}`}>
+                    <p className="to flex justify-center">
+                        {isLoggedinContact ? 'To:' : 'From:'}
+                        <span>{contact.username}</span>
+                    </p>
+                </Link>
+
+                : <p className="from flex justify-center">
+                    From: {contact}
+                    <img className='add' title='Add contact' onClick={onSaveContact} src={add} alt="add" />
+                </p >
+
+            : ''
 
     if (move) {
         return (
             <section className="move-preview flex column">
-                {to}
                 <section className="info">
                     <p> <span className={isLoggedinContact ? 'red' : 'green'}>{isLoggedinContact ? '-' : '+'}</span>  ${move.amount}</p>
                     <p className="title">{move.title}</p>
@@ -22,6 +34,7 @@ export function MovePreview({ move, contact }) {
                     <p className='at'>{new Intl.DateTimeFormat('en-GB',
                         { dateStyle: 'short' }).format(move.at)}</p>
                 </section>
+                {to}
             </section >
         )
     }

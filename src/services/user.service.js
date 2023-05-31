@@ -10,7 +10,6 @@ export const userService = {
     updateUser,
     getUserById,
     saveUser,
-    getEmptyContact,
     saveLocalUser
 }
 
@@ -73,14 +72,6 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function getEmptyContact() {
-    return {
-        name: '',
-        email: '',
-        phone: ''
-    }
-}
-
 function getEmptyUser() {
     return {
         username: '',
@@ -88,7 +79,6 @@ function getEmptyUser() {
         email: '',
         phone: '',
         coins: 100,
-        moves: [],
         contacts: []
     }
 }
@@ -123,7 +113,6 @@ function saveLocalUser(user) {
         _id: user._id,
         username: user.username,
         coins: user.coins,
-        moves: user.moves,
         contacts: user.contacts,
         email: user.email,
         phone: user.phone

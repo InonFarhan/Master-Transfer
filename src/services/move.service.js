@@ -15,14 +15,15 @@ async function getMoves(filterBy) {
 }
 
 async function addMove(contact, transfer) {
+    let loggedinUser = userService.getLoggedinUser()
     let move = _getEmptyMove()
-    move.fromId = userService.getLoggedinUser()._id
+    move.fromId = loggedinUser._id
+    move.fromNumber = loggedinUser.phone
     move.toId = contact._id
     move.to = contact.username
     move.at = Date.now()
     move.amount = transfer.amount
     move.title = transfer.title
-    move.fromNumber = contact.phone
     await httpService.post('move', move)
     return contact
 }

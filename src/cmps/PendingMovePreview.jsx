@@ -1,10 +1,23 @@
 import { Link } from 'react-router-dom'
+import add from '../assets/svgs/add.svg'
 
-export function PendingMovePreview({ pendingMove, contact, updatePendingMove }) {
+export function PendingMovePreview({ pendingMove, contact, updatePendingMove, onSaveContact }) {
+    let from =
+        contact ?
+            typeof contact !== 'string' ?
+                <Link
+                    to={`/contact/${contact._id}`}>
+                    <p className="from flex justify-center">
+                        from: <span>{contact.username}</span>
+                    </p>
+                </Link>
 
-    // const from = contact ? <Link to={`/contact/${contact._id}`}><p className="from">from: <span>{contact.username}</span></p> </Link> : ''
-    let from = contact ? <Link to={`/contact/${contact._id}`}><p className="from">from: <span>{contact.username}</span></p> </Link> : ''
-    if (typeof contact === 'string') from = <p className="to">From: {contact}</p >
+                : <p className="from flex justify-center">
+                    From: {contact}
+                    <img className='add' title='Add contact' onClick={onSaveContact} src={add} alt="add" />
+                </p >
+
+            : ''
 
     if (pendingMove) {
         return (

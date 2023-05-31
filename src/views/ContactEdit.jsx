@@ -17,7 +17,7 @@ export function ContactEdit() {
             let contact
             try {
                 if (contactId) contact = await userService.getUserById(contactId)
-                else contact = userService.getEmptyContact()
+                else contact = { phone: '' }
                 setContact(contact)
             }
             catch (error) {
@@ -54,17 +54,15 @@ export function ContactEdit() {
         }
     }
 
-    const inputToShow = contact?._id ?
-        <section>
-            <section className="input flex"> <label htmlFor="name">Name</label>
-                <input value={contact.username} onChange={handleChange} type="text" name="username" id="name" />
-            </section>
-            <section className="input flex">
-                <label htmlFor="email">Email</label>
-                <input value={contact.email} onChange={handleChange} type="text" name="email" id="email" />
-            </section>
+    const inputToShow = <section>
+        <section className="input flex"> <label htmlFor="name">Name</label>
+            <input value={contact?.username} onChange={handleChange} type="text" name="username" id="name" />
         </section>
-        : ''
+        <section className="input flex">
+            <label htmlFor="email">Email</label>
+            <input value={contact?.email} onChange={handleChange} type="text" name="email" id="email" />
+        </section>
+    </section>
 
     if (contact) return (
         <section className='edit-preview'>
@@ -74,7 +72,7 @@ export function ContactEdit() {
             <section className='contact-edit'>
                 <h1>{contact._id ? 'Edit' : 'Add'} contact</h1>
                 <form onSubmit={onSaveContact} >
-                    {inputToShow}
+                    {!!contact._id && inputToShow}
                     <section className="input flex">
                         <label htmlFor="phone">Phone</label>
                         <input value={contact.phone} onChange={handleChange} type="tel" name="phone" id="phone" />

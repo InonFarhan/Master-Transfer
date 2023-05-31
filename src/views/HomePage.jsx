@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { logout } from '../store/actions/user.actions'
 import { loadContacts } from '../store/actions/user.actions'
 import { loadMoves, loadPendingMoves } from '../store/actions/move.actions'
+import { loadUser } from '../store/actions/user.actions'
 import { Weather } from '../cmps/weather.jsx'
 import { MovesList } from './MovesList.jsx'
 import { PendingMovesList } from './PendingMovesList.jsx'
@@ -22,6 +23,10 @@ export function HomePage() {
     const [movesToShowAmount, setMovesToShowAmount] = useState(5)
 
     useEffect(() => {
+        dispatch(loadUser())
+    }, [])
+
+    useEffect(() => {
         function checkUser() {
             if (!user) navigate('/userConnecting')
             else {
@@ -33,6 +38,7 @@ export function HomePage() {
         }
         checkUser()
     }, [user, dispatch, navigate])
+
 
     useEffect(() => {
         if (!user) dispatch(loadPendingMoves())
@@ -46,8 +52,7 @@ export function HomePage() {
     function loadMoreMoves() {
         setMovesToShowAmount(movesToPreview.length + 5 <= moves.length ? movesToShowAmount + 5 : movesToPreview.length + (moves.length - movesToPreview.length))
     }
-
-    const movesToPreview = moves.slice(moves.length < 3 ? 0 : moves.length - movesToShowAmount, moves.length).reverse()
+    const movesToPreview = moves.slice(moves.length < 5 ? 0 : moves.length - movesToShowAmount, moves.length).reverse()
 
     const pendingMovesToShow = pendingMoves.length ?
         <section className="pending-moves">
@@ -78,7 +83,7 @@ export function HomePage() {
                 </section>
                 <Weather className="weather-and-time" />
             </section>
-            {(pendingMoves.find(pM => pM.toId !== user._id) || (!moves.find(m => m.fromId === user._id || m.toId === user._id))) && <Loader />}
+            {(pendingMoves.length > 0 && (pendingMoves.find(pM => pM.toId !== user._id)) || ((moves.length > 0 && !moves.find(m => m.fromId === user._id || m.toId === user._id)))) && <Loader />}
             {pendingMovesToShow}
             {movesToShow}
             <button className="logout simple-button" onClick={onLogout} title='Logout'><img src={logout_button} alt="logout" /></button>
