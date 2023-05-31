@@ -3,8 +3,8 @@ import add from '../assets/svgs/add.svg'
 
 export function PendingMovePreview({ pendingMove, contact, updatePendingMove, onSaveContact }) {
     let from =
-        contact ?
-            typeof contact !== 'string' ?
+        contact
+            ? typeof contact !== 'string' ?
                 <Link
                     to={`/contact/${contact._id}`}>
                     <p className="from flex justify-center">

@@ -29,15 +29,6 @@ export function Login() {
         }
     }
 
-    async function onLogin(ev) {
-        ev.preventDefault()
-        try {
-            dispatch(login(user))
-        } catch (error) {
-            console.log('error:', error)
-        }
-    }
-
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
@@ -46,6 +37,15 @@ export function Login() {
 
     function onBack() {
         navigate('/')
+    }
+
+    async function onLogin(ev) {
+        ev.preventDefault()
+        try {
+            dispatch(login(user))
+        } catch (error) {
+            console.log('error:', error)
+        }
     }
 
     if (user) return (

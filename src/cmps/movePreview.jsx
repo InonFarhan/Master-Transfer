@@ -7,8 +7,8 @@ export function MovePreview({ move, contact, onSaveContact }) {
     const isLoggedinContact = move.fromId === user._id ? true : false
 
     let to =
-        contact ?
-            typeof contact !== 'string' ?
+        contact
+            ? typeof contact !== 'string' ?
                 <Link
                     to={`/contact/${contact._id}`}>
                     <p className="to flex justify-center">
