@@ -4,7 +4,7 @@ import { getSvg } from '../services/svg.service.js'
 
 export function AppHeader() {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
-    return (
+    if (user) return (
         <header className="app-header flex">
             <nav className={user ? 'flex opacity-1' : 'flex opacity-0'}>
                 <NavLink to="/" >
@@ -26,4 +26,8 @@ export function AppHeader() {
             </nav>
         </header>
     )
+    else return (
+        <h1>
+            Mater Transfer
+        </h1>)
 }
