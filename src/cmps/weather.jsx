@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { getSvg } from '../services/svg.service.js'
 
 export function Weather() {
     const [season, setSeason] = useState('winter')
@@ -26,7 +27,12 @@ export function Weather() {
 
     return (
         <section className="weather-and-time-preview">
-            <img src={require(`../assets/season-imgs/${season}.png`)} />
+            <span
+                className="weather-and-time"
+                dangerouslySetInnerHTML={{
+                    __html: getSvg(season),
+                }}
+            />
             <p>{time}</p>
         </section>
     )

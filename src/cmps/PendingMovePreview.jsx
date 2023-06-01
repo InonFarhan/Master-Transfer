@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import add from '../assets/svgs/add.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function PendingMovePreview({ pendingMove, contact, updatePendingMove, onSaveContact }) {
     let from =
@@ -14,7 +14,14 @@ export function PendingMovePreview({ pendingMove, contact, updatePendingMove, on
 
                 : <p className="from flex justify-center">
                     From: {contact}
-                    <img className='add' title='Add contact' onClick={onSaveContact} src={add} alt="add" />
+                    <span
+                        className="add flex"
+                        title='Add contact'
+                        onClick={onSaveContact}
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('add'),
+                        }}
+                    />
                 </p >
 
             : ''

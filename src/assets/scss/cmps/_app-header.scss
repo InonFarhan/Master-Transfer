@@ -41,8 +41,13 @@
     justify-content: center;
 
     nav {
-        img {
-            width: 2em;
+
+        .contacts,
+        .home {
+            >* {
+                width: 1.8em;
+                height: 1.8em;
+            }
         }
 
         gap: 1em;

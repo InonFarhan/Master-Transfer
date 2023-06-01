@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addMove } from '../store/actions/move.actions'
-import send from '../assets/svgs/send.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function TransferFund({ contact, coins }) {
 
@@ -41,7 +41,13 @@ export function TransferFund({ contact, coins }) {
             <form className="transfer flex" onSubmit={onTransfer}>
                 <input className="title" onChange={handleChange} value={transfer.title} type="text" name="title" id="title" placeholder="Transfer title" />
                 <input className="amount" onChange={handleChange} value={transfer.amount} type="number" name="amount" id="amount" placeholder="Amount" min="1" />
-                <button className="simple-button send flex"><img src={send} alt="send" /></button>
+                <button className="simple-button send">
+                    <span
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('send'),
+                        }}
+                    />
+                </button>
             </form>
         </section >
     )

@@ -1,8 +1,10 @@
 .sign-up-login {
-    img {
-        width: 5em;
-        border-radius: 50%;
-        margin-block: 1em;
+    .logo {
+        >* {
+            width: 5em;
+            border-radius: 50%;
+            margin-block: 1em;
+        }
     }
 
     .links>* {
@@ -17,10 +19,12 @@
 
 .sign-up-preview,
 .login-preview {
-    img {
-        width: 5em;
-        border-radius: 50%;
-        margin-block: 1em;
+    .logo {
+        >* {
+            width: 5em;
+            border-radius: 50%;
+            margin-block: 1em;
+        }
     }
 
     form {
@@ -43,9 +47,7 @@
         cursor: pointer;
         position: fixed;
         top: 2.5em;
-        left: 1em;
-        height: 1.5em;
-        width: 1.5em;
+        left: 1.5em;
         padding: 0.2em;
     }
 }

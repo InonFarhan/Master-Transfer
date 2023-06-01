@@ -4,7 +4,6 @@
 
     .user-name {
         font-size: 1.2rem;
-        margin-block-end: 0.5em;
         font-weight: bold;
 
         @include for-tablet-layout {
@@ -13,22 +12,25 @@
     }
 
     .info {
-        margin-block-end: 1em;
 
         .edit {
-            img {
-                margin-inline-start: 0.1em;
-                width: 0.8em;
+            >* {
                 margin-inline-start: 0.3em;
+                width: 1em;
+                height: 1em;
+                justify-content: end;
             }
         }
 
         >* {
             align-items: center;
 
-            img {
-                width: 1.5em;
-                margin-inline-start: -0.3em;
+            .dollar,
+            .weather-and-time {
+                >* {
+                    width: 1.5em;
+                    margin-inline-start: -0.3em;
+                }
             }
         }
 
@@ -56,6 +58,11 @@
             position: absolute;
             top: 3em;
             left: 2em;
+
+            >* {
+                display: flex;
+                margin-inline: 0.1em;
+            }
         }
     }
 }

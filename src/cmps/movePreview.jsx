@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import add from '../assets/svgs/add.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function MovePreview({ move, contact, onSaveContact }) {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
@@ -19,7 +19,14 @@ export function MovePreview({ move, contact, onSaveContact }) {
 
                 : <p className="from flex justify-center">
                     From: {contact}
-                    <img className='add' title='Add contact' onClick={onSaveContact} src={add} alt="add" />
+                    <span
+                        className="add"
+                        title='Add contact'
+                        onClick={onSaveContact}
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('add'),
+                        }}
+                    />
                 </p >
 
             : ''

@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { signUp } from '../store/actions/user.actions'
 import { userService } from '../services/user.service.js';
-import logo from '../assets/svgs/logo.svg'
-import arrow_back from '../assets/svgs/arrow_back.svg'
+import { getSvg } from '../services/svg.service.js'
+
 
 export function SignUp() {
     const [user, setUser] = useState(null)
@@ -49,8 +49,20 @@ export function SignUp() {
     if (user) return (
         <section className="sign-up">
             <section className='sign-up-preview'>
-                <img className="back" onClick={onBack} src={arrow_back} alt="arrow_back" />
-                <img className="logo" src={logo} alt="logo" />
+                <span
+                    className="back"
+                    title='Back'
+                    onClick={onBack}
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('arrow_back'),
+                    }}
+                />
+                <span
+                    className="logo"
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('logo'),
+                    }}
+                />
                 <section>
                     <form className='flex column' onSubmit={onSignUp} >
                         <input placeholder='User name' value={user.username} onChange={handleChange} type="text" name="username" id="username" />

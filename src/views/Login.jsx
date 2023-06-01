@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../store/actions/user.actions'
-import logo from '../assets/svgs/logo.svg'
-import arrow_back from '../assets/svgs/arrow_back.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function Login() {
     const [user, setUser] = useState(null)
@@ -51,8 +50,20 @@ export function Login() {
     if (user) return (
         <section className="login">
             <section className='login-preview'>
-                <img className="back" onClick={onBack} src={arrow_back} alt="arrow_back" />
-                <img className="logo" src={logo} alt="logo" />
+                <span
+                    className="back"
+                    title='Back'
+                    onClick={onBack}
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('arrow_back'),
+                    }}
+                />
+                <span
+                    className="logo"
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('logo'),
+                    }}
+                />
                 <section>
                     <form className='flex column' onSubmit={onLogin} >
                         <input placeholder='User name' value={user.username} onChange={handleChange} type="text" name="username" id="username" />

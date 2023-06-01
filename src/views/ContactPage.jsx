@@ -7,7 +7,7 @@ import { loadContacts } from '../store/actions/user.actions'
 import { ContactList } from '../cmps/contactList'
 import { ContactFilter } from '../cmps/ContactFilter'
 import { Loader } from '../cmps/Loader.jsx'
-import add from '../assets/svgs/add.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function ContactPage() {
     const contacts = useSelector((storeState) => storeState.userModule.contacts)
@@ -37,7 +37,13 @@ export function ContactPage() {
             <section className="contacts-list">
                 <ContactFilter filterBy={filterBy} onChangeFilter={onChangeFilter} />
                 <Link className="add" to={`/contact/edit`}>
-                    <img src={add} alt="add" />
+                    <span
+                        className="add flex auto-center"
+                        title='Add new contact'
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('add'),
+                        }}
+                    />
                 </Link>
                 <ContactList contacts={contacts} />
             </section>

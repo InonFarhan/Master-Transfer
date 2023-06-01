@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/svgs/logo.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function UserConnecting() {
     return (
         < section className="sign-up-login" >
-            <img className="logo" src={logo} alt="logo" />
+
+            <span
+                className="logo"
+                dangerouslySetInnerHTML={{
+                    __html: getSvg('logo'),
+                }}
+            />
+
             <section className="links">
                 <Link className="login simple-button" to="/login">
                     Login

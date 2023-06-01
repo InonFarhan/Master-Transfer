@@ -1,12 +1,6 @@
 .details-preview {
     .actions {
         justify-content: space-between;
-
-        .edit {
-            img {
-                width: 1.7em;
-            }
-        }
     }
 
     .contact-card {
@@ -97,7 +91,6 @@
 
                         &#amount {
                             width: 5em;
-                            margin: auto;
                         }
 
                         height: 2em;
@@ -119,19 +112,26 @@
 
                     .send {
                         cursor: pointer;
-                        border-radius: 50%;
-                        background-color: $clr3;
-                        background: none;
-                        margin: auto;
-
-                        @include for-normal-layout {
-                            height: 2.5em;
-                            width: 2.5em;
-                        }
+                        height: 1.9em;
+                        width: 1.9em;
 
                         @include for-tablet-layout {
-                            height: 1.8em;
-                            width: 1.8em;
+                            margin: auto;
+                            height: 0;
+                            width: 0;
+                        }
+
+                        display: flex;
+
+                        align-items: self-start;
+
+                        >* {
+                            align-self: center;
+
+                            >* {
+                                height: 1.9em;
+                                width: 1.9em;
+                            }
                         }
                     }
                 }

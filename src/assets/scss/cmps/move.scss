@@ -99,9 +99,10 @@
                 text-overflow: ellipsis;
 
                 .add {
-                    margin-inline-start: 0.2em;
-                    width: 1.1em;
-                    cursor: pointer;
+                    >* {
+                        margin-inline-start: 0.2em;
+                        cursor: pointer;
+                    }
                 }
 
                 @include for-tablet-layout {

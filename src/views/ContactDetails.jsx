@@ -9,8 +9,7 @@ import { loadMoves, loadPendingMoves } from '../store/actions/move.actions'
 import { TransferFund } from './TransferFund.jsx';
 import { MovesList } from './MovesList.jsx';
 import { PendingMovesList } from './PendingMovesList.jsx'
-import arrow_back from '../assets/svgs/arrow_back.svg'
-import remove from '../assets/svgs/delete.svg'
+import { getSvg } from '../services/svg.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 
 export function ContactDetails() {
@@ -83,8 +82,22 @@ export function ContactDetails() {
     return (
         <section className="details-preview" >
             <section className="actions flex space-between">
-                <img className="back" onClick={onBack} src={arrow_back} alt="arrow_back" />
-                <img className="remove" onClick={onDelete} src={remove} alt="remove" />
+                <span
+                    className="back"
+                    title='Back'
+                    onClick={onBack}
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('arrow_back'),
+                    }}
+                />
+                <span
+                    className="remove"
+                    title='Remove'
+                    onClick={onDelete}
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('delete'),
+                    }}
+                />
             </section>
             <section className="contact-card">
                 <section className="contact-details flex">

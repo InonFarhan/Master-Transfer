@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { saveUser } from '../store/actions/user.actions'
 import { userService } from '../services/user.service.js';
-import arrow_back from '../assets/svgs/arrow_back.svg'
+import { getSvg } from '../services/svg.service.js'
 
 export function ContactEdit() {
     const [contact, setContact] = useState(null)
@@ -67,7 +67,14 @@ export function ContactEdit() {
     if (contact) return (
         <section className='edit-preview'>
             <section className="actions flex">
-                <img className="back" onClick={onBack} src={arrow_back} alt="arrow_back" />
+                <span
+                    className="back"
+                    title='Back'
+                    onClick={onBack}
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('arrow_back'),
+                    }}
+                />
             </section>
             <section className='contact-edit'>
                 <h1>{contact._id ? 'Edit' : 'Add'} contact</h1>

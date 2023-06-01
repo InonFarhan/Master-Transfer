@@ -8,9 +8,7 @@ import { loadUser } from '../store/actions/user.actions'
 import { Weather } from '../cmps/weather.jsx'
 import { MovesList } from './MovesList.jsx'
 import { PendingMovesList } from './PendingMovesList.jsx'
-import logout_button from '../assets/svgs/logout.svg'
-import dollar from '../assets/svgs/dollar.svg'
-import edit from '../assets/svgs/edit.svg'
+import { getSvg } from '../services/svg.service.js'
 import { Loader } from '../cmps/Loader.jsx'
 
 export function HomePage() {
@@ -71,22 +69,50 @@ export function HomePage() {
 
     if (user && contacts) return (
         <section className="home-page-preview">
+
             <section className="info">
+
                 <h1 className="user-name">Hello {user.username}!
                     <Link className="edit" to={`/contact/edit/${user._id}`}>
-                        <img src={edit} alt="edit" />
+                        <span
+                            className="edit"
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('edit'),
+                            }}
+                        />
                     </Link></h1>
+
                 <section className="flex space-between">
                     <section className="balance flex">
-                        <p className="user-coins flex"><img src={dollar} alt="dollar" /><span>Coins: ${user.coins}</span></p>
+                        <p className="user-coins flex">
+                            <span
+                                className="dollar"
+                                dangerouslySetInnerHTML={{
+                                    __html: getSvg('dollar'),
+                                }}
+                            />
+                            <span>Coins: ${user.coins}</span></p>
                     </section>
                 </section>
+
                 <Weather className="weather-and-time" />
             </section>
-            {(pendingMoves.length > 0 && (pendingMoves.find(pM => pM.toId !== user._id)) || ((moves.length > 0 && !moves.find(m => m.fromId === user._id || m.toId === user._id)))) && <Loader />}
+
+            {(pendingMoves.length > 0 && (pendingMoves.find(pM => pM.toId !== user._id))
+                || ((moves.length > 0 && !moves.find(m => m.fromId === user._id
+                    || m.toId === user._id))))
+                && <Loader />}
             {pendingMovesToShow}
             {movesToShow}
-            <button className="logout simple-button" onClick={onLogout} title='Logout'><img src={logout_button} alt="logout" /></button>
+
+            <button className="logout simple-button" onClick={onLogout} title='Logout'>
+                <span
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('logout'),
+                    }}
+                />
+            </button>
+
         </section>
     )
     else return (
