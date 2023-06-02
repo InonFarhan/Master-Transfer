@@ -10,6 +10,11 @@ export function SignUp() {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const loggedinUser = useSelector((storeState) => storeState.userModule.loggedInUser)
+
+    useEffect(() => {
+        if (loggedinUser) navigate('/')
+    }, [loggedinUser, navigate])
 
     useEffect(() => {
         loadUser()
@@ -29,7 +34,6 @@ export function SignUp() {
         ev.preventDefault()
         try {
             dispatch(signUp(user))
-            navigate('/')
         }
         catch (error) {
             console.log('error:', error)
