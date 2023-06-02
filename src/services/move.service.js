@@ -33,8 +33,8 @@ async function updateMove(user, move, type) {
     const sendingUser = userService.getUserById(move.fromId)
     if (type === 'approve') {
         move.status = 'Approved'
-        sendingUser.coins -= +move.amount
-        receivingUser.coins += +move.amount
+        sendingUser.coins -= move.amount
+        receivingUser.coins += move.amount
         userService.updateUser(receivingUser)
         userService.updateUser(sendingUser)
         userService.saveLocalUser(receivingUser)
