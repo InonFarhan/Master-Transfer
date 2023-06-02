@@ -36,7 +36,7 @@ export function ContactPage() {
         return (
             <section className="contacts-list">
                 <ContactFilter filterBy={filterBy} onChangeFilter={onChangeFilter} />
-                <Link className="add" to={`/contact/edit`}>
+                <Link className="add" to={`/edit`}>
                     <span
                         className="add flex auto-center"
                         title='Add new contact'

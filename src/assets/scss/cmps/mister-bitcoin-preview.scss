@@ -1,5 +1,11 @@
 .contacts-list {
     .contact-filter {
+        margin-block-start: 1em;
+
+        @include for-normal-layout {
+            margin-block-start: 0;
+        }
+
         margin-block-end: 1em;
 
         input {

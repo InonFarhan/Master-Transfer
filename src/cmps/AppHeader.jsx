@@ -5,7 +5,7 @@ import { getSvg } from '../services/svg.service.js'
 export function AppHeader() {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     return (
-        <header className="app-header flex">
+        <header className="app-header">
             <nav className={user ? 'flex opacity-1' : 'flex opacity-0'}>
                 <NavLink to="/" >
                     <span
@@ -20,6 +20,14 @@ export function AppHeader() {
                         className="contacts"
                         dangerouslySetInnerHTML={{
                             __html: getSvg('contacts'),
+                        }}
+                    />
+                </NavLink>
+                <NavLink className="setting" to={`/edit/${user?._id}`}>
+                    <span
+                        className="setting"
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('setting'),
                         }}
                     />
                 </NavLink>

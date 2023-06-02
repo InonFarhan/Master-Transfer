@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, Link } from 'react-router-dom'
-import { logout } from '../store/actions/user.actions'
+import { useNavigate } from 'react-router-dom'
 import { loadContacts } from '../store/actions/user.actions'
 import { loadMoves, loadPendingMoves } from '../store/actions/move.actions'
 import { loadUser } from '../store/actions/user.actions'
@@ -26,7 +25,7 @@ export function HomePage() {
 
     useEffect(() => {
         function checkUser() {
-            if (!user) navigate('/userConnecting')
+            if (!user) navigate('/login')
             else {
                 navigate('/')
                 dispatch(loadContacts())
@@ -41,11 +40,6 @@ export function HomePage() {
     useEffect(() => {
         if (!user) dispatch(loadPendingMoves())
     }, [user, pendingMoves, dispatch])
-
-    function onLogout() {
-        dispatch(logout())
-        navigate('/userConnecting')
-    }
 
     function loadMoreMoves() {
         setMovesToShowAmount(movesToPreview.length + 5 <= moves.length ? movesToShowAmount + 5 : movesToPreview.length + (moves.length - movesToPreview.length))
@@ -67,26 +61,24 @@ export function HomePage() {
         </section>
         : ''
 
+    let timeNow = new Date().getHours()
+    const bless =
+        timeNow > 5 && timeNow < 12 ? 'Good morning'
+            : timeNow > 12 && timeNow < 16 ? ' Good noon'
+                : timeNow > 16 && timeNow < 20 ? 'Good afternoon'
+                    : timeNow > 20 && timeNow < 22 ? 'Good evening'
+                        : 'Good night'
+
     if (user && contacts) return (
         <section className="home-page-preview">
 
             <section className="info">
-
-                <h1 className="user-name">Hello {user.username}!
-                    <Link className="edit" to={`/contact/edit/${user._id}`}>
-                        <span
-                            className="edit"
-                            dangerouslySetInnerHTML={{
-                                __html: getSvg('edit'),
-                            }}
-                        />
-                    </Link></h1>
-
+                <h1 className="user-name">{bless} {user.username}!</h1>
                 <section className="flex space-between">
                     <section className="balance flex">
                         <p className="user-coins flex">
                             <span
-                                className="dollar"
+                                className="dollar flex"
                                 dangerouslySetInnerHTML={{
                                     __html: getSvg('dollar'),
                                 }}
@@ -104,14 +96,6 @@ export function HomePage() {
                 && <Loader />}
             {pendingMovesToShow}
             {movesToShow}
-
-            <button className="logout simple-button" onClick={onLogout} title='Logout'>
-                <span
-                    dangerouslySetInnerHTML={{
-                        __html: getSvg('logout'),
-                    }}
-                />
-            </button>
 
         </section>
     )

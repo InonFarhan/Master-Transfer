@@ -5,7 +5,6 @@ import { signUp } from '../store/actions/user.actions'
 import { userService } from '../services/user.service.js';
 import { getSvg } from '../services/svg.service.js'
 
-
 export function SignUp() {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
@@ -67,13 +66,14 @@ export function SignUp() {
                         __html: getSvg('logo'),
                     }}
                 />
+                <h1 className="sigh-in">SignUp</h1>
                 <section>
                     <form className='flex column' onSubmit={onSignUp} >
                         <input placeholder='User name' value={user.username} onChange={handleChange} type="text" name="username" id="username" />
-                        <input placeholder='Password' value={user.password} onChange={handleChange} type="text" name="password" id="password" />
-                        <input placeholder='Email' value={user.email} onChange={handleChange} type="email" name="email" id="email" />
                         <input placeholder='Phone' value={user.phone} onChange={handleChange} type="text" name="phone" id="phone" />
-                        <button className='simple-button'>Sign up</button>
+                        <input placeholder='Email' value={user.email} onChange={handleChange} type="email" name="email" id="email" />
+                        <input placeholder='Password' value={user.password} onChange={handleChange} type="text" name="password" id="password" />
+                        <button className='simple-button medium-button'>Continue</button>
                     </form>
                 </section>
             </section>

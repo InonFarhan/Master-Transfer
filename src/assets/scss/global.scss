@@ -63,17 +63,81 @@
 
     >footer {
         z-index: 2;
-        background-color: $clr6;
+        background-color: $clr12;
         color: $clr3;
-        border-top-left-radius: 555px;
-        border-top-right-radius: 555px;
-        height: 1.5em;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
 
-        >* {
-            margin-inline-start: 0.5em;
+        @include for-normal-layout {
+            background-color: $clr6;
+            border-top-left-radius: 555px;
+            border-top-right-radius: 555px;
+        }
+
+        .footer-1 {
+            height: 1.5em;
+            display: none;
+
+            @include for-normal-layout {
+                display: flex;
+            }
+        }
+
+        .footer-2 {
+            display: flex;
+
+            @include for-normal-layout {
+                display: none;
+            }
+
+            .opacity-1 {
+                a {
+                    opacity: 1;
+                    transition: 0.5s;
+                }
+            }
+
+            .opacity-0 {
+                a {
+                    opacity: 0;
+                    transition: 0.5s;
+                }
+            }
+
+            a {
+                &:hover:not(.active) {
+                    opacity: 0.5;
+                }
+
+                &.active {
+                    box-shadow: inset 0 -4px $clr6;
+                }
+            }
+
+            h1.logo {
+                flex-grow: 1;
+                font-weight: 600;
+            }
+
+            justify-content: center;
+
+            nav {
+
+                .contacts,
+                .home,
+                .setting {
+                    >* {
+                        width: 1.8em;
+                        height: 1.8em;
+                    }
+                }
+
+                gap: 1em;
+            }
         }
     }
 }

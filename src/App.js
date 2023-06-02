@@ -18,12 +18,11 @@ function App() {
 
         <main className="container">
           <Routes>
-            <Route path="/contact/edit/:id?" element={<ContactEdit />} />
+            <Route path="/edit/:id?" element={<ContactEdit />} />
             <Route path="/contact/:id" element={<ContactDetails />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signUp" element={<SignUp />} />
-            <Route path="/userConnecting" element={<UserConnecting />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </main>

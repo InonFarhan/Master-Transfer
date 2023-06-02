@@ -30,7 +30,7 @@ async function addMove(contact, transfer) {
 
 async function updateMove(user, move, type) {
     const receivingUser = user
-    const sendingUser = userService.getUserById(move.fromId)
+    const sendingUser = await userService.getUserById(move.fromId)
     if (type === 'approve') {
         move.status = 'Approved'
         sendingUser.coins -= move.amount

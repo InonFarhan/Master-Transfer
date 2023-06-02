@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { saveUser } from '../store/actions/user.actions'
 import { userService } from '../services/user.service.js';
 import { getSvg } from '../services/svg.service.js'
+import { logout } from '../store/actions/user.actions'
 
 export function ContactEdit() {
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const [contact, setContact] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
@@ -54,6 +56,11 @@ export function ContactEdit() {
         }
     }
 
+    function onLogout() {
+        dispatch(logout())
+        navigate('/login')
+    }
+
     const inputToShow = <section>
         <section className="input flex"> <label htmlFor="name">Name</label>
             <input value={contact?.username} onChange={handleChange} type="text" name="username" id="name" />
@@ -77,7 +84,7 @@ export function ContactEdit() {
                 />
             </section>
             <section className='contact-edit'>
-                <h1>{contact._id ? 'Edit' : 'Add'} contact</h1>
+                <h1>{contact._id ? 'Edit' : 'Add'} {contact._id === user._id ? 'profile' : 'contact'}</h1>
                 <form onSubmit={onSaveContact} >
                     {!!contact._id && inputToShow}
                     <section className="input flex">
@@ -87,6 +94,13 @@ export function ContactEdit() {
                     <button>{contact._id ? 'Save' : 'Add'}</button>
                 </form>
             </section>
+            {contact._id === user._id && <button className="logout simple-button" onClick={onLogout} title='Logout'>
+                <span
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('logout'),
+                    }}
+                />
+            </button>}
         </section>
     )
 }
