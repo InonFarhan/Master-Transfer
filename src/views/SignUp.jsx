@@ -72,7 +72,7 @@ export function SignUp() {
                         <input placeholder='User name' value={user.username} onChange={handleChange} type="text" name="username" id="username" />
                         <input placeholder='Phone' value={user.phone} onChange={handleChange} type="text" name="phone" id="phone" />
                         <input placeholder='Email' value={user.email} onChange={handleChange} type="email" name="email" id="email" />
-                        <input placeholder='Password' value={user.password} onChange={handleChange} type="text" name="password" id="password" />
+                        <input placeholder='Password' value={user.password} onChange={handleChange} type="password" name="password" id="password" />
                         <button className='simple-button medium-button'>Continue</button>
                     </form>
                 </section>
