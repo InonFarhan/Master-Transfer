@@ -68,6 +68,12 @@ export function Login() {
                 </p>
                 <p className="gift">$100 gift for new registrant!</p>
             </section>
+            <span
+                className="peopleTransfer"
+                dangerouslySetInnerHTML={{
+                    __html: getSvg('peopleTransfer'),
+                }}
+            />
         </section>
     )
 }

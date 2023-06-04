@@ -1,26 +1,6 @@
-.sign-up-login {
-    font-size: 1.5em;
-
-    .logo {
-        >* {
-            width: 5em;
-            border-radius: 50%;
-            margin-block: 1em;
-        }
-    }
-
-    .links>* {
-        margin-block: 1em;
-    }
-
-    .login,
-    .signUp {
-        text-decoration: none;
-    }
-}
-
 .sign-up-preview,
 .login-preview {
+    // margin-block-end: 3em;
 
     .sigh-in {
         margin-block-end: 2em;
@@ -61,5 +41,20 @@
         margin-block-start: 0.2em;
         font-size: 0.9rem;
         animation: slide-in-out 2.5s linear;
+    }
+
+}
+
+.peopleTransfer {
+    >* {
+        width: 18em;
+        height: 18em;
+    }
+}
+
+.onlineMoney {
+    >* {
+        width: 10em;
+        height: 10em;
     }
 }

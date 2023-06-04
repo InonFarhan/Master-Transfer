@@ -89,6 +89,12 @@ export function ContactEdit() {
                     <button className='simple-button medium-button'>{contact._id ? 'Save' : 'Add'}</button>
                 </form>
             </section>
+            <span
+                className="peopleTransfer"
+                dangerouslySetInnerHTML={{
+                    __html: getSvg('peopleTransfer'),
+                }}
+            />
         </section>
     )
 }

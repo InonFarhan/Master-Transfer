@@ -77,6 +77,12 @@ export function SignUp() {
                     </form>
                 </section>
             </section>
+            <span
+                className="onlineMoney"
+                dangerouslySetInnerHTML={{
+                    __html: getSvg('onlineMoney'),
+                }}
+            />
         </section>
     )
 }

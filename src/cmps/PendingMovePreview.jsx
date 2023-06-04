@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import { getSvg } from '../services/svg.service.js'
 
 export function PendingMovePreview({ pendingMove, contact, updatePendingMove, onSaveContact }) {
-    let from =
+    const from =
         contact
-            ? typeof contact !== 'string' ?
+            ? typeof contact === 'object' ?
                 <Link
                     to={`/contact/${contact._id}`}>
                     <p className="from flex justify-center">

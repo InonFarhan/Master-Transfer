@@ -8,7 +8,7 @@ export function MovePreview({ move, contact, onSaveContact }) {
 
     let to =
         contact
-            ? typeof contact !== 'string' ?
+            ? typeof contact === 'object' ?
                 <Link
                     to={`/contact/${contact._id}`}>
                     <p className="to flex justify-center">

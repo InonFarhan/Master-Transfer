@@ -31,7 +31,6 @@ export function Setting() {
             <button className="logout simple-button" onClick={onLogout} title='Logout'>
                 Logout
             </button>
-
         </section >
     )
 }

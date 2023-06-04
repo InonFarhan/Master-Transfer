@@ -18,10 +18,15 @@ export function Weather() {
             setTime(new Date().toLocaleTimeString())
         }, 1000)
 
-        if (month > 10 || month < 4) season = 'winter'
-        else if (month > 3 && month <= 6) season = 'spring'
-        else if (month > 6 && month <= 9) season = 'summer'
-        else if (month > 9 && month < 11) season = 'autumn'
+        const isWinter = month > 10 || month < 4
+        const isSpring = month > 3 && month <= 6
+        const isSummer = month > 6 && month <= 9
+        const isAutumn = month > 9 && month < 11
+        
+        if (isWinter) season = 'winter'
+        else if (isSpring) season = 'spring'
+        else if (isSummer) season = 'summer'
+        else if (isAutumn) season = 'autumn'
         setSeason(season)
     }
 
