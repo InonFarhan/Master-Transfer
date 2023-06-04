@@ -16,7 +16,8 @@
 @import "views/mister-bitcoin-contactPage";
 @import "views/mister-bitcoin-details";
 @import "views/mister-bitcoin-edit";
-@import "views/LoginSignUp";
+@import "views/loginSignUp";
+@import "views/setting";
 
 // Components
 @import "cmps/home-page-preview";
@@ -116,11 +117,6 @@
                 &.active {
                     box-shadow: inset 0 -4px $clr6;
                 }
-            }
-
-            h1.logo {
-                flex-grow: 1;
-                font-weight: 600;
             }
 
             justify-content: center;

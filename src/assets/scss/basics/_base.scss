@@ -72,6 +72,14 @@ button {
   }
 }
 
+.logo {
+  >* {
+    width: 5em;
+    border-radius: 50%;
+    margin-block: 1em;
+  }
+}
+
 input {
   font-family: inherit;
   text-align: inherit;

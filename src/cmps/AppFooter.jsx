@@ -28,7 +28,7 @@ export function AppFooter() {
                             }}
                         />
                     </NavLink>
-                    <NavLink className="setting" to={`/edit/${user?._id}`}>
+                    <NavLink to={`/setting`}>
                         <span
                             className="setting"
                             dangerouslySetInnerHTML={{

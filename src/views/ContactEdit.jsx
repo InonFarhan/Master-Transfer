@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { saveUser } from '../store/actions/user.actions'
 import { userService } from '../services/user.service.js';
 import { getSvg } from '../services/svg.service.js'
-import { logout } from '../store/actions/user.actions'
 
 export function ContactEdit() {
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
@@ -56,16 +55,12 @@ export function ContactEdit() {
         }
     }
 
-    function onLogout() {
-        dispatch(logout())
-        navigate('/login')
-    }
-
     const inputToShow = <section>
-        <section className="input flex"> <label htmlFor="name">Name</label>
+        <section className="input flex column">
+            <label htmlFor="name">Name</label>
             <input value={contact?.username} onChange={handleChange} type="text" name="username" id="name" />
         </section>
-        <section className="input flex">
+        <section className="input flex column">
             <label htmlFor="email">Email</label>
             <input value={contact?.email} onChange={handleChange} type="text" name="email" id="email" />
         </section>
@@ -83,20 +78,17 @@ export function ContactEdit() {
                     }}
                 />
             </section>
-            <section className='contact-edit'>
+            <section className='contact-edit flex'>
                 <h1>{contact._id ? 'Edit' : 'Add'} {contact._id === user._id ? 'profile' : 'contact'}</h1>
-                <form onSubmit={onSaveContact} >
+                <form onSubmit={onSaveContact} className='flex column'>
                     {!!contact._id && inputToShow}
-                    <section className="input flex">
+                    <section className="input flex column">
                         <label htmlFor="phone">Phone</label>
                         <input value={contact.phone} onChange={handleChange} type="tel" name="phone" id="phone" />
                     </section>
-                    <button>{contact._id ? 'Save' : 'Add'}</button>
+                    <button className='simple-button medium-button'>{contact._id ? 'Save' : 'Add'}</button>
                 </form>
             </section>
-            {contact._id === user._id && <button className="logout simple-button" onClick={onLogout} title='Logout'>
-                Logout
-            </button>}
         </section>
     )
 }

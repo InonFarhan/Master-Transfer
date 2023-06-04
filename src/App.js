@@ -4,7 +4,7 @@ import { AppFooter } from './cmps/AppFooter';
 import { HomePage } from './views/HomePage';
 import { SignUp } from './views/SignUp';
 import { Login } from './views/Login';
-import { UserConnecting } from './views/UserConnecting';
+import { Setting } from './views/Setting';
 import { ContactPage } from './views/ContactPage';
 import { ContactDetails } from './views/ContactDetails'
 import { ContactEdit } from './views/ContactEdit';
@@ -18,6 +18,7 @@ function App() {
 
         <main className="container">
           <Routes>
+            <Route path="/setting" element={<Setting />} />
             <Route path="/edit/:id?" element={<ContactEdit />} />
             <Route path="/contact/:id" element={<ContactDetails />} />
             <Route path="/contact" element={<ContactPage />} />
