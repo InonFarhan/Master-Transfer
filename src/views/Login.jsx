@@ -34,10 +34,6 @@ export function Login() {
         setUser((prevUser) => ({ ...prevUser, [field]: value }))
     }
 
-    function onBack() {
-        navigate('/')
-    }
-
     async function onLogin(ev) {
         ev.preventDefault()
         try {
@@ -50,14 +46,6 @@ export function Login() {
     if (user) return (
         <section className="login">
             <section className='login-preview'>
-                <span
-                    className="back"
-                    title='Back'
-                    onClick={onBack}
-                    dangerouslySetInnerHTML={{
-                        __html: getSvg('arrow_back'),
-                    }}
-                />
                 <span
                     className="logo"
                     dangerouslySetInnerHTML={{
