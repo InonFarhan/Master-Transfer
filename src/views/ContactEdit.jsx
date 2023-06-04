@@ -95,11 +95,7 @@ export function ContactEdit() {
                 </form>
             </section>
             {contact._id === user._id && <button className="logout simple-button" onClick={onLogout} title='Logout'>
-                <span
-                    dangerouslySetInnerHTML={{
-                        __html: getSvg('logout'),
-                    }}
-                />
+                Logout
             </button>}
         </section>
     )
