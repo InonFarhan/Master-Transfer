@@ -66,7 +66,7 @@ export function Login() {
                         Sign up
                     </Link>
                 </p>
-                <p className="gift">$100 gift for new registrant!</p>
+                <p className="gift">$100 gift for new registrants!</p>
             </section>
             <span
                 className="peopleTransfer"
