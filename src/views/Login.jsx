@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { login } from '../store/actions/user.actions'
 import { getSvg } from '../services/svg.service.js'
+// import { LoginWithGoogle } from './loginWithGoogle.js'
 
 export function Login() {
     const [user, setUser] = useState(null)
@@ -60,6 +61,7 @@ export function Login() {
                         <button className='simple-button medium-button'>Continue</button>
                     </form>
                 </section>
+                {/* <LoginWithGoogle /> */}
                 <p className='signUp-option'>
                     Don't have an account?
                     <Link className="signUp simple-button" to="/signUp">

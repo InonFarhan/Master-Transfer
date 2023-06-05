@@ -47,13 +47,20 @@
 
 .peopleTransfer {
     >* {
+        position: absolute;
+        bottom: 5%;
+        right: 50%;
+        translate: 50%;
         width: 18em;
-        height: 18em;
     }
 }
 
 .onlineMoney {
     >* {
+        position: absolute;
+        bottom: 5%;
+        right: 50%;
+        translate: 50%;
         width: 10em;
         height: 10em;
     }
