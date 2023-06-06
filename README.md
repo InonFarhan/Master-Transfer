@@ -81,9 +81,9 @@ This project is licensed under the [MIT License](https://github.com/InonFarhan/M
 
 For any inquiries or further information, feel free to contact the project maintainer:
 
-- Name: [Your Name]
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/your-profile)
-- Email: [Your Email Address]
+- Name: (Inon Farhan)
+- LinkedIn: (https://www.linkedin.com/in/your-profile)
+- Email: (inon.f4@gmail.com)
 
 ---
 
@@ -94,4 +94,3 @@ For the backend project, please refer to the [Master Transfer backend repository
 [Master Transfer App Demo](https://lnkd.in/dSstsH_3)
 
 [My GitHub Profile](https://lnkd.in/da-PieD7)
-
