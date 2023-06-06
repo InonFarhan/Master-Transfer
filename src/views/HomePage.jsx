@@ -62,12 +62,18 @@ export function HomePage() {
         : ''
 
     let timeNow = new Date().getHours()
+    const isMorning = timeNow > 4 && timeNow < 12
+    const isNoon = timeNow > 11 && timeNow < 16
+    const isAfterNoon = timeNow > 15 && timeNow < 20
+    const isEvening = timeNow > 19 && timeNow < 22
+    const isNight = timeNow > 21 || timeNow < 5
+
     const bless =
-        timeNow > 5 && timeNow < 12 ? 'Good morning'
-            : timeNow > 12 && timeNow < 16 ? ' Good noon'
-                : timeNow > 16 && timeNow < 20 ? 'Good afternoon'
-                    : timeNow > 20 && timeNow < 22 ? 'Good evening'
-                        : 'Good night'
+        isMorning ? 'Good morning' :
+            isNoon ? ' Good noon' :
+                isAfterNoon ? 'Good afternoon' :
+                    isEvening ? 'Good evening' :
+                        isNight ? 'Good night' : ''
 
     if (user && contacts) return (
         <section className="home-page-preview">
